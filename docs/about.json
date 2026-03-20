@@ -1,16 +1,16 @@
 {
   "project": {
-    "name": "",
-    "description": "",
-    "type": ""
+    "name": "制造业MES系统",
+    "description": "面向离散制造业的生产执行管理系统，覆盖生产工单、设备管理、质量管理、物料管理等核心模块",
+    "type": "新建"
   },
   "customer": {
     "name": "",
-    "industry": "",
-    "requirements": ""
+    "industry": "制造业",
+    "requirements": "生产过程数字化管理，实现工单跟踪、设备监控、质量检测、物料追溯"
   },
   "metadata": {
-    "createdAt": "",
-    "updatedAt": ""
+    "createdAt": "2026-03-20T10:00:00Z",
+    "updatedAt": "2026-03-20T10:00:00Z"
   }
 }
