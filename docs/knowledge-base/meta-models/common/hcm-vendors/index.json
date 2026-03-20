@@ -1,0 +1,12 @@
+{
+  "name": "HCM Vendors",
+  "description": "人力资源管理系统厂商元模型集合",
+  "vendors": [
+    {
+      "name": "北森 (Beisen)",
+      "path": "beisen",
+      "modules": ["Core HR", "Performance", "Recruitment", "Learning", "Compensation"],
+      "description": "一体化HR SaaS及人才管理平台"
+    }
+  ]
+}

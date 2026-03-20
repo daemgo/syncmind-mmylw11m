@@ -1,0 +1,493 @@
+{
+  "meta": {
+    "id": "hcm-vendor-beisen",
+    "name": "北森iTalentX",
+    "parentModelId": "common-hcm",
+    "vendor": "北京北森云计算股份有限公司",
+    "product": "iTalentX 一体化HR SaaS及人才管理平台",
+    "version": "1.0.0",
+    "updatedAt": "2026-03-03",
+    "freshness": {
+      "createdAt": "2026-03-03",
+      "lastReviewedAt": "2026-03-03",
+      "nextReviewDate": "2026-09-03",
+      "confidence": "medium",
+      "dataSource": "北森官网产品介绍 (beisen.com)、产品白皮书、行业分析报告"
+    }
+  },
+
+  "overview": {
+    "fullName": "北森iTalentX 一体化HR SaaS及人才管理平台",
+    "latestVersion": "2025版",
+    "platform": "aPaaS业务定制平台 + BI智能分析平台 + 开放互联平台",
+    "positioning": "中国领先的HCM SaaS厂商，一体化HR SaaS及人才管理平台，提供组织人事、假勤管理、薪酬福利、员工服务、智慧分析等核心功能。从本质上释放HR的双手，提高工作效能，提升员工体验，深入数据洞察，助力企业科学智慧决策。",
+    "customerBase": "6000+中大型企业客户，日处理数据10亿+条",
+    "deploymentOptions": ["公有云SaaS", "私有部署", "混合云"],
+    "techStack": {
+      "architecture": "SaaS云原生，aPaaS平台支撑",
+      "platform": "鲁班PaaS平台（零代码/低代码/高代码三种开发模式）",
+      "database": "多租户部署",
+      "mobile": "移动端原生支持（iOS/Android）",
+      "ai": "北森AI Family产品线",
+      "integration": "OpenAPI、AnyConnect主数据同步、单点登录、待办集成"
+    }
+  },
+
+  "productEditions": [
+    {
+      "name": "基础版",
+      "target": "小型企业，基础HR管理需求",
+      "modules": "组织人事、假勤管理、基础薪酬"
+    },
+    {
+      "name": "标准版",
+      "target": "中型企业，标准HR管理需求",
+      "modules": "完整Core HR功能 + 员工服务"
+    },
+    {
+      "name": "企业版",
+      "target": "中大型企业，集团化管控",
+      "modules": "全功能 + 集团多组织 + 智慧分析"
+    },
+    {
+      "name": "旗舰版",
+      "target": "大型企业，行业深度定制",
+      "modules": "全功能 + PaaS扩展 + AI能力 + 行业方案"
+    }
+  ],
+
+  "moduleMapping": {
+    "description": "北森模块与通用HCM元模型模块的映射关系",
+    "mapping": [
+      {
+        "genericModuleId": "org-employee",
+        "vendorModuleName": "组织人事",
+        "vendorSubModules": ["组织架构管理", "员工主数据", "岗职位体系", "编制管理", "极速入职", "电子合同"],
+        "vendorSpecificFeatures": [
+          "灵活支撑直线制、职能制、矩阵制等各种组织结构",
+          "直接导入、拖拽调整，集团化多级架构轻松管理",
+          "时间轴立体回溯，记录每步变化",
+          "员工全生命周期在线管理",
+          "无缝对接招聘系统",
+          "基于职级/职务序列/专业条线建立规范的岗职位体系"
+        ]
+      },
+      {
+        "genericModuleId": "time-attendance",
+        "vendorModuleName": "假勤管理",
+        "vendorSubModules": ["考勤打卡", "请假管理", "加班管理", "排班管理", "出差管理"],
+        "vendorSpecificFeatures": [
+          "灵活落地企业各类考勤制度：晚走晚到、弹性班次、坐班、排班等",
+          "支持WiFi、GPS、考勤机对接",
+          "补签、加班、休假、调班均可在线查看申请",
+          "考勤异常系统自动提醒",
+          "出差审批对接差旅平台，一键订票"
+        ]
+      },
+      {
+        "genericModuleId": "compensation",
+        "vendorModuleName": "薪酬福利",
+        "vendorSubModules": ["薪资核算", "社保公积金", "个税管理", "薪酬分析"],
+        "vendorSpecificFeatures": [
+          "基本薪资、绩效、福利、津贴、补贴、奖金等多种薪资项目灵活组合",
+          "个税通对接税局个税系统，自动计算个税，一键申报",
+          "云端预置300余城市的社保缴交规则",
+          "精细化核算员工薪酬，支持补发补扣、离职结薪、多部门发薪等复杂场景"
+        ]
+      },
+      {
+        "genericModuleId": "employee-selfservice",
+        "vendorModuleName": "员工服务",
+        "vendorSubModules": ["员工自助", "AI机器人", "证明开具", "激励管理"],
+        "vendorSpecificFeatures": [
+          "移动优先，随时随地查看个人信息、工资条、通讯录",
+          "AI机器人7*24回答员工人事业务相关问题",
+          "在线开具各类证明",
+          "激励（标签、徽章、打赏、祝福）互联网式交流",
+          "对接主流福利平台"
+        ]
+      },
+      {
+        "genericModuleId": "hr-analytics",
+        "vendorModuleName": "智慧分析",
+        "vendorSubModules": ["数据分析", "风险预警", "自定义报表"],
+        "vendorSpecificFeatures": [
+          "跨模块数据分析，兼顾业务视角和结果导向",
+          "风险规则自动发现并推送",
+          "自定义报表，Excel般易用",
+          "预置6大行业600余张主题报表"
+        ]
+      }
+    ]
+  },
+
+  "entities": [
+    {
+      "moduleId": "org-employee",
+      "moduleName": "组织人事",
+      "entities": [
+        {
+          "name": "Organization",
+          "description": "组织架构",
+          "fields": [
+            {"name": "orgId", "type": "string", "required": true, "description": "组织ID"},
+            {"name": "orgName", "type": "string", "required": true, "description": "组织名称"},
+            {"name": "orgType", "type": "select", "options": ["直线制", "职能制", "矩阵制", "事业部制", "子公司"], "description": "组织类型"},
+            {"name": "parentOrgId", "type": "string", "description": "上级组织ID"},
+            {"name": "orgLevel", "type": "number", "description": "组织层级"},
+            {"name": "effectiveDate", "type": "date", "description": "生效日期"},
+            {"name": "expiryDate", "type": "date", "description": "失效日期"},
+            {"name": "status", "type": "select", "options": ["active", "inactive"], "description": "状态"},
+            {"name": "managerId", "type": "string", "description": "直接上级/负责人ID"},
+            {"name": "headcount", "type": "number", "description": "编制人数"},
+            {"name": "currentCount", "type": "number", "description": "现有人数"},
+            {"name": "costCenter", "type": "string", "description": "成本中心"},
+            {"name": "businessUnit", "type": "string", "description": "业务单元"}
+          ]
+        },
+        {
+          "name": "Employee",
+          "description": "员工主数据",
+          "fields": [
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID/工号"},
+            {"name": "personId", "type": "string", "description": "人员ID（主数据）"},
+            {"name": "chineseName", "type": "string", "required": true, "description": "中文姓名"},
+            {"name": "englishName", "type": "string", "description": "英文姓名"},
+            {"name": "gender", "type": "select", "options": ["男", "女", "未知"], "description": "性别"},
+            {"name": "birthDate", "type": "date", "description": "出生日期"},
+            {"name": "idType", "type": "select", "options": ["身份证", "护照", "港澳通行证", "其他"], "description": "证件类型"},
+            {"name": "idNumber", "type": "string", "description": "证件号码"},
+            {"name": "nationality", "type": "string", "description": "国籍"},
+            {"name": "ethnicity", "type": "string", "description": "民族"},
+            {"name": "birthplace", "type": "string", "description": "籍贯"},
+            {"name": "hukouType", "type": "select", "options": ["城镇", "农村"], "description": "户口类型"},
+            {"name": "hukouLocation", "type": "string", "description": "户口所在地"},
+            {"name": "maritalStatus", "type": "select", "options": ["未婚", "已婚", "离异", "丧偶"], "description": "婚姻状况"},
+            {"name": "politicalStatus", "type": "select", "options": ["群众", "共青团员", "中共党员", "民主党派"], "description": "政治面貌"},
+            {"name": "highestEducation", "type": "select", "options": ["初中及以下", "高中/中专", "大专", "本科", "硕士", "博士"], "description": "最高学历"},
+            {"name": "graduationSchool", "type": "string", "description": "毕业院校"},
+            {"name": "major", "type": "string", "description": "专业"},
+            {"name": "photoUrl", "type": "url", "description": "照片URL"},
+            {"name": "mobilePhone", "type": "string", "description": "手机号码"},
+            {"name": "email", "type": "email", "description": "邮箱"},
+            {"name": "emergencyContact", "type": "string", "description": "紧急联系人"},
+            {"name": "emergencyPhone", "type": "string", "description": "紧急联系电话"}
+          ]
+        },
+        {
+          "name": "EmployeeJob",
+          "description": "员工任职信息",
+          "fields": [
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "orgId", "type": "string", "required": true, "description": "所属组织ID"},
+            {"name": "departmentId", "type": "string", "description": "部门ID"},
+            {"name": "positionId", "type": "string", "description": "岗位ID"},
+            {"name": "positionName", "type": "string", "description": "岗位名称"},
+            {"name": "jobLevel", "type": "string", "description": "职级"},
+            {"name": "jobTitle", "type": "string", "description": "职务/职衔"},
+            {"name": "jobSeries", "type": "string", "description": "职系/序列"},
+            {"name": "workLocation", "type": "string", "description": "工作地点"},
+            {"name": "employmentType", "type": "select", "options": ["全职", "兼职", "实习生", "劳务派遣", "外包"], "description": "用工类型"},
+            {"name": "employeeType", "type": "select", "options": ["正式员工", "试用期", "待入职"], "description": "员工类型"},
+            {"name": "hireDate", "type": "date", "required": true, "description": "入职日期"},
+            {"name": "probationEndDate", "type": "date", "description": "试用期结束日期"},
+            {"name": "regularDate", "type": "date", "description": "转正日期"},
+            {"name": "contractStartDate", "type": "date", "description": "合同起始日期"},
+            {"name": "contractEndDate", "type": "date", "description": "合同结束日期"},
+            {"name": "contractType", "type": "select", "options": ["固定期限", "无固定期限"], "description": "合同类型"},
+            {"name": "workEmail", "type": "email", "description": "工作邮箱"},
+            {"name": "workMobile", "type": "string", "description": "工作手机"},
+            {"name": "directManagerId", "type": "string", "description": "直接上级ID"},
+            {"name": "costCenter", "type": "string", "description": "成本中心"},
+            {"name": "status", "type": "select", "options": ["在职", "离职", "待入职", "试用期"], "description": "任职状态"}
+          ]
+        },
+        {
+          "name": "Position",
+          "description": "岗位体系",
+          "fields": [
+            {"name": "positionId", "type": "string", "required": true, "description": "岗位ID"},
+            {"name": "positionName", "type": "string", "required": true, "description": "岗位名称"},
+            {"name": "orgId", "type": "string", "description": "所属组织"},
+            {"name": "jobLevel", "type": "string", "description": "职级"},
+            {"name": "jobSeries", "type": "string", "description": "职系/序列"},
+            {"name": "jobCategory", "type": "select", "options": ["管理序列", "专业序列", "技能序列", "营销序列"], "description": "岗位序列"},
+            {"name": "headcount", "type": "number", "description": "编制人数"},
+            {"name": "currentCount", "type": "number", "description": "现有人数"},
+            {"name": "description", "type": "text", "description": "岗位描述"},
+            {"name": "requirements", "type": "text", "description": "任职要求"},
+            {"name": "status", "type": "select", "options": ["启用", "停用"]}
+          ]
+        }
+      ]
+    },
+    {
+      "moduleId": "time-attendance",
+      "moduleName": "假勤管理",
+      "entities": [
+        {
+          "name": "AttendanceRecord",
+          "description": "考勤记录",
+          "fields": [
+            {"name": "recordId", "type": "string", "required": true, "description": "记录ID"},
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "checkDate", "type": "date", "required": true, "description": "考勤日期"},
+            {"name": "firstCheckIn", "type": "datetime", "description": "第一次签到时间"},
+            {"name": "lastCheckOut", "type": "datetime", "description": "最后一次签退时间"},
+            {"name": "checkInLocation", "type": "string", "description": "签到地点"},
+            {"name": "checkOutLocation", "type": "string", "description": "签退地点"},
+            {"name": "checkInDevice", "type": "string", "description": "签到设备"},
+            {"name": "checkInMethod", "type": "select", "options": ["GPS", "WiFi", "考勤机", "人脸识别", "二维码"], "description": "签到方式"},
+            {"name": "workHours", "type": "number", "description": "实际工时"},
+            {"name": "status", "type": "select", "options": ["正常", "迟到", "早退", "缺卡", "旷工", "外出"], "description": "考勤状态"},
+            {"name": "exceptionReason", "type": "string", "description": "异常原因"}
+          ]
+        },
+        {
+          "name": "LeaveRequest",
+          "description": "请假申请",
+          "fields": [
+            {"name": "requestId", "type": "string", "required": true, "description": "申请ID"},
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "leaveType", "type": "select", "options": ["年假", "病假", "事假", "婚假", "产假", "陪产假", "丧假", "工伤假", "其他"], "required": true, "description": "请假类型"},
+            {"name": "startDate", "type": "date", "required": true, "description": "开始日期"},
+            {"name": "endDate", "type": "date", "required": true, "description": "结束日期"},
+            {"name": "startTime", "type": "time", "description": "开始时间"},
+            {"name": "endTime", "type": "time", "description": "结束时间"},
+            {"name": "duration", "type": "number", "required": true, "description": "请假时长（天/小时）"},
+            {"name": "reason", "type": "text", "description": "请假原因"},
+            {"name": "status", "type": "select", "options": ["待审批", "已批准", "已拒绝", "已取消"], "description": "审批状态"},
+            {"name": "approverId", "type": "string", "description": "审批人ID"},
+            {"name": "approveTime", "type": "datetime", "description": "审批时间"}
+          ]
+        },
+        {
+          "name": "OvertimeRequest",
+          "description": "加班申请",
+          "fields": [
+            {"name": "requestId", "type": "string", "required": true, "description": "申请ID"},
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "overtimeDate", "type": "date", "required": true, "description": "加班日期"},
+            {"name": "startTime", "type": "datetime", "required": true, "description": "开始时间"},
+            {"name": "endTime", "type": "datetime", "required": true, "description": "结束时间"},
+            {"name": "duration", "type": "number", "required": true, "description": "加班时长（小时）"},
+            {"name": "overtimeType", "type": "select", "options": ["工作日加班", "周末加班", "节假日加班"], "description": "加班类型"},
+            {"name": "reason", "type": "text", "description": "加班原因"},
+            {"name": "status", "type": "select", "options": ["待审批", "已批准", "已拒绝", "已取消"]},
+            {"name": "approverId", "type": "string", "description": "审批人ID"}
+          ]
+        },
+        {
+          "name": "LeaveBalance",
+          "description": "假期余额",
+          "fields": [
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "leaveType", "type": "string", "required": true, "description": "假期类型"},
+            {"name": "year", "type": "number", "description": "年度"},
+            {"name": "totalDays", "type": "number", "description": "可休天数"},
+            {"name": "usedDays", "type": "number", "description": "已用天数"},
+            {"name": "remainingDays", "type": "number", "description": "剩余天数"},
+            {"name": "expireDate", "type": "date", "description": "有效期截止日期"}
+          ]
+        },
+        {
+          "name": "Schedule",
+          "description": "排班计划",
+          "fields": [
+            {"name": "scheduleId", "type": "string", "required": true, "description": "排班ID"},
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "scheduleDate", "type": "date", "required": true, "description": "排班日期"},
+            {"name": "shiftId", "type": "string", "description": "班次ID"},
+            {"name": "shiftName", "type": "string", "description": "班次名称"},
+            {"name": "workStartTime", "type": "time", "description": "上班时间"},
+            {"name": "workEndTime", "type": "time", "description": "下班时间"},
+            {"name": "workHours", "type": "number", "description": "计划工时"},
+            {"name": "isRestDay", "type": "boolean", "description": "是否休息日"}
+          ]
+        }
+      ]
+    },
+    {
+      "moduleId": "compensation",
+      "moduleName": "薪酬福利",
+      "entities": [
+        {
+          "name": "SalaryStructure",
+          "description": "薪资结构",
+          "fields": [
+            {"name": "structureId", "type": "string", "required": true, "description": "薪资方案ID"},
+            {"name": "structureName", "type": "string", "required": true, "description": "薪资方案名称"},
+            {"name": "effectiveDate", "type": "date", "description": "生效日期"},
+            {"name": "salaryItems", "type": "json", "description": "薪资项目列表"},
+            {"name": "description", "type": "text", "description": "方案描述"}
+          ]
+        },
+        {
+          "name": "SalaryItem",
+          "description": "薪资项目",
+          "fields": [
+            {"name": "itemId", "type": "string", "required": true, "description": "项目ID"},
+            {"name": "itemName", "type": "string", "required": true, "description": "项目名称"},
+            {"name": "itemType", "type": "select", "options": ["基本工资", "岗位工资", "绩效工资", "加班费", "奖金", "津贴", "补贴", "扣款", "社保扣款", "公积金扣款", "个税扣款"], "required": true, "description": "项目类型"},
+            {"name": "isTaxable", "type": "boolean", "description": "是否计税"},
+            {"name": "isSocialInsurable", "type": "boolean", "description": "是否社保基数"},
+            {"name": "calculationType", "type": "select", "options": ["固定金额", "按比例", "公式计算"], "description": "计算方式"},
+            {"name": "defaultValue", "type": "number", "description": "默认值"}
+          ]
+        },
+        {
+          "name": "EmployeeSalary",
+          "description": "员工薪资",
+          "fields": [
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "salaryMonth", "type": "string", "required": true, "description": "薪资月份（YYYYMM）"},
+            {"name": "structureId", "type": "string", "description": "薪资方案ID"},
+            {"name": "grossSalary", "type": "number", "description": "税前工资"},
+            {"name": "netSalary", "type": "number", "description": "税后工资/实发工资"},
+            {"name": "taxableSalary", "type": "number", "description": "计税工资"},
+            {"name": "socialInsurance", "type": "number", "description": "社保个人扣款"},
+            {"name": "housingFund", "type": "number", "description": "公积金个人扣款"},
+            {"name": "incomeTax", "type": "number", "description": "个人所得税"},
+            {"name": "salaryDetails", "type": "json", "description": "薪资明细"},
+            {"name": "status", "type": "select", "options": ["待核算", "已核算", "待发放", "已发放"]}
+          ]
+        },
+        {
+          "name": "SocialInsuranceRecord",
+          "description": "社保记录",
+          "fields": [
+            {"name": "recordId", "type": "string", "required": true, "description": "记录ID"},
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "month", "type": "string", "required": true, "description": "缴纳月份"},
+            {"name": "city", "type": "string", "description": "缴纳城市"},
+            {"name": "pensionBase", "type": "number", "description": "养老基数"},
+            {"name": "pensionPersonal", "type": "number", "description": "养老个人扣款"},
+            {"name": "pensionCompany", "type": "number", "description": "养老企业扣款"},
+            {"name": "medicalBase", "type": "number", "description": "医疗基数"},
+            {"name": "medicalPersonal", "type": "number", "description": "医疗个人扣款"},
+            {"name": "medicalCompany", "type": "number", "description": "医疗企业扣款"},
+            {"name": "unemploymentBase", "type": "number", "description": "失业基数"},
+            {"name": "unemploymentPersonal", "type": "number", "description": "失业个人扣款"},
+            {"name": "unemploymentCompany", "type": "number", "description": "失业企业扣款"},
+            {"name": "housingFundBase", "type": "number", "description": "公积金基数"},
+            {"name": "housingFundPersonal", "type": "number", "description": "公积金个人扣款"},
+            {"name": "housingFundCompany", "type": "number", "description": "公积金企业扣款"},
+            {"name": "workInjuryRate", "type": "number", "description": "工伤保险比例"},
+            {"name": "maternityRate", "type": "number", "description": "生育保险比例"}
+          ]
+        },
+        {
+          "name": "PayrollRun",
+          "description": "薪资核算批次",
+          "fields": [
+            {"name": "runId", "type": "string", "required": true, "description": "批次ID"},
+            {"name": "runName", "type": "string", "required": true, "description": "批次名称"},
+            {"name": "periodStart", "type": "date", "required": true, "description": "核算周期开始"},
+            {"name": "periodEnd", "type": "date", "required": true, "description": "核算周期结束"},
+            {"name": "payDate", "type": "date", "description": "发放日期"},
+            {"name": "totalEmployees", "type": "number", "description": "核算人数"},
+            {"name": "totalGross", "type": "number", "description": "税前总额"},
+            {"name": "totalNet", "type": "number", "description": "实发总额"},
+            {"name": "status", "type": "select", "options": ["草稿", "计算中", "待审核", "已审核", "已发放"]}
+          ]
+        }
+      ]
+    },
+    {
+      "moduleId": "employee-selfservice",
+      "moduleName": "员工服务",
+      "entities": [
+        {
+          "name": "EmployeeSelfService",
+          "description": "员工自助服务",
+          "fields": [
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "profile", "type": "json", "description": "个人信息快照"},
+            {"name": "paySlipAccess", "type": "boolean", "description": "工资条查看权限"},
+            {"name": "leaveRequestAccess", "type": "boolean", "description": "请假申请权限"},
+            {"name": "overtimeRequestAccess", "type": "boolean", "description": "加班申请权限"},
+            {"name": "certificateRequestAccess", "type": "boolean", "description": "证明申请权限"}
+          ]
+        },
+        {
+          "name": "CertificateRequest",
+          "description": "证明申请",
+          "fields": [
+            {"name": "requestId", "type": "string", "required": true, "description": "申请ID"},
+            {"name": "employeeId", "type": "string", "required": true, "description": "员工ID"},
+            {"name": "certificateType", "type": "select", "options": ["在职证明", "收入证明", "离职证明", "社保缴纳证明", "公积金缴纳证明", "其他"], "required": true, "description": "证明类型"},
+            {"name": "purpose", "type": "string", "description": "用途"},
+            {"name": "content", "type": "text", "description": "自定义内容"},
+            {"name": "status", "type": "select", "options": ["待审批", "已批准", "已出具", "已领取", "已拒绝"]},
+            {"name": "approveTime", "type": "datetime", "description": "审批时间"},
+            {"name": "issueTime", "type": "datetime", "description": "出具时间"}
+          ]
+        },
+        {
+          "name": "EmployeeReward",
+          "description": "员工激励",
+          "fields": [
+            {"name": "rewardId", "type": "string", "required": true, "description": "激励ID"},
+            {"name": "employeeId", "type": "string", "required": true, "description": "获奖员工ID"},
+            {"name": "rewardType", "type": "select", "options": ["标签", "徽章", "打赏", "祝福", "表彰"], "required": true, "description": "激励类型"},
+            {"name": "rewardName", "type": "string", "description": "激励名称"},
+            {"name": "description", "type": "text", "description": "激励描述"},
+            {"name": "giverId", "type": "string", "description": "给予者ID"},
+            {"name": "giveTime", "type": "datetime", "required": true, "description": "给予时间"}
+          ]
+        }
+      ]
+    },
+    {
+      "moduleId": "hr-analytics",
+      "moduleName": "智慧分析",
+      "entities": [
+        {
+          "name": "HRReport",
+          "description": "HR分析报表",
+          "fields": [
+            {"name": "reportId", "type": "string", "required": true, "description": "报表ID"},
+            {"name": "reportName", "type": "string", "required": true, "description": "报表名称"},
+            {"name": "reportType", "type": "select", "options": ["人员分析", "组织分析", "假勤分析", "薪酬分析", "人效分析", "离职分析"], "description": "报表类型"},
+            {"name": "dataSource", "type": "json", "description": "数据源配置"},
+            {"name": "dimensions", "type": "json", "description": "分析维度"},
+            {"name": "metrics", "type": "json", "description": "指标定义"},
+            {"name": "filters", "type": "json", "description": "筛选条件"}
+          ]
+        },
+        {
+          "name": "RiskAlert",
+          "description": "风险预警",
+          "fields": [
+            {"name": "alertId", "type": "string", "required": true, "description": "预警ID"},
+            {"name": "alertType", "type": "select", "options": ["合同到期", "试用期到期", "社保断缴", "考勤异常", "薪酬异常", "离职倾向"], "required": true, "description": "预警类型"},
+            {"name": "employeeId", "type": "string", "description": "涉及员工ID"},
+            {"name": "description", "type": "string", "description": "预警描述"},
+            {"name": "severity", "type": "select", "options": ["低", "中", "高"], "description": "严重程度"},
+            {"name": "status", "type": "select", "options": ["待处理", "已处理", "已忽略"]},
+            {"name": "createTime", "type": "datetime", "description": "创建时间"},
+            {"name": "handleTime", "type": "datetime", "description": "处理时间"}
+          ]
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {"from": "Organization", "to": "Organization", "type": "parent-child", "description": "组织上下级"},
+    {"from": "Employee", "to": "EmployeeJob", "type": "one-to-many", "description": "员工可有多段任职经历"},
+    {"from": "EmployeeJob", "to": "Organization", "type": "many-to-one", "description": "任职归属组织"},
+    {"from": "EmployeeJob", "to": "Position", "type": "many-to-one", "description": "任职关联岗位"},
+    {"from": "AttendanceRecord", "to": "Employee", "type": "many-to-one", "description": "考勤归属员工"},
+    {"from": "LeaveRequest", "to": "Employee", "type": "many-to-one", "description": "请假归属员工"},
+    {"from": "OvertimeRequest", "to": "Employee", "type": "many-to-one", "description": "加班归属员工"},
+    {"from": "Schedule", "to": "Employee", "type": "many-to-one", "description": "排班归属员工"},
+    {"from": "EmployeeSalary", "to": "Employee", "type": "many-to-one", "description": "薪资归属员工"},
+    {"from": "SocialInsuranceRecord", "to": "Employee", "type": "many-to-one", "description": "社保归属员工"},
+    {"from": "PayrollRun", "to": "EmployeeSalary", "type": "one-to-many", "description": "批次包含多条薪资"}
+  ],
+  "industries": ["互联网", "金融保险", "房地产", "连锁", "生产制造", "国央企"],
+  "dataScale": {
+    "enterpriseClients": "6000+",
+    "dailyRecords": "10亿+"
+  }
+}

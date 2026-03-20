@@ -1,0 +1,95 @@
+{
+  "requirements": {
+    "currentVersion": "v1",
+    "versions": [
+      {
+        "version": "v1",
+        "createdAt": null,
+        "updatedAt": null,
+        "status": "draft",
+        "analyst": "",
+
+        "salesInput": {
+          "salesPerson": "",
+          "overallAssessment": {
+            "customerIntent": "",
+            "projectUrgency": "",
+            "budgetSituation": "",
+            "competitionStatus": "",
+            "winProbability": "",
+            "keyObstacles": [],
+            "confidenceLevel": ""
+          },
+          "keyPersons": [],
+          "realNeeds": {
+            "explicitNeeds": [],
+            "implicitNeeds": [],
+            "suspectedNeeds": []
+          },
+          "decisionFactors": {
+            "primaryFactor": "",
+            "secondaryFactors": [],
+            "dealBreakers": []
+          },
+          "notes": ""
+        },
+
+        "pendingQuestions": [],
+
+        "background": {
+          "businessContext": "",
+          "currentChallenges": [],
+          "triggerEvent": "",
+          "currentSystems": [],
+          "expectedOutcomes": []
+        },
+
+        "items": [],
+        "painPoints": [],
+        "opportunities": [],
+
+        "scope": {
+          "inScope": [],
+          "outOfScope": [],
+          "phases": []
+        },
+
+        "constraints": {
+          "budget": {
+            "total": "",
+            "paymentTerms": "",
+            "flexibility": ""
+          },
+          "timeline": {
+            "expectedStart": "",
+            "expectedGoLive": "",
+            "hardDeadline": "",
+            "flexibility": ""
+          }
+        },
+
+        "technicalRequirements": {
+          "functionalNeeds": [],
+          "technicalNeeds": [],
+          "integrationNeeds": [],
+          "securityNeeds": [],
+          "nonFunctionalNeeds": []
+        },
+
+        "risksAndAssumptions": {
+          "risks": [],
+          "assumptions": [],
+          "dependencies": []
+        },
+
+        "solutionDirection": {
+          "overallApproach": "",
+          "recommendedType": "",
+          "nextSteps": []
+        },
+
+        "openQuestions": []
+      }
+    ]
+  }
+}
