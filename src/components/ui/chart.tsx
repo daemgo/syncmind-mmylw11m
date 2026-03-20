@@ -42,43 +42,68 @@ function ChartInner({
   containerRef: React.RefObject<HTMLDivElement | null>
 }) {
   const [size, setSize] = React.useState({ width: 0, height: 0 })
+  const [ready, setReady] = React.useState(false)
 
   React.useEffect(() => {
     const el = containerRef.current
     if (!el) return
 
-    let raf: number
+    let retryCount = 0
+    let timer: ReturnType<typeof setTimeout>
 
     const measure = () => {
+      // Try multiple methods to get dimensions
       const rect = el.getBoundingClientRect()
-      setSize((prev) => {
-        if (prev.width === Math.floor(rect.width) && prev.height === Math.floor(rect.height)) return prev
-        return { width: Math.floor(rect.width), height: Math.floor(rect.height) }
-      })
+      let w = Math.floor(rect.width)
+      let h = Math.floor(rect.height)
+
+      // Fallback to offsetWidth/offsetHeight
+      if (w === 0) w = el.offsetWidth
+      if (h === 0) h = el.offsetHeight
+
+      // Fallback to clientWidth/clientHeight
+      if (w === 0) w = el.clientWidth
+      if (h === 0) h = el.clientHeight
+
+      if (w > 0 && h > 0) {
+        setSize({ width: w, height: h })
+        setReady(true)
+        return true
+      }
+      return false
     }
 
-    // Poll until we get real dimensions (handles sandbox lazy-layout)
-    const poll = () => {
-      measure()
-      const rect = el.getBoundingClientRect()
-      if (rect.width === 0 || rect.height === 0) {
-        raf = requestAnimationFrame(poll)
+    // Retry with increasing delays for sandbox environments
+    const retry = () => {
+      if (measure()) return
+      retryCount++
+      if (retryCount < 20) {
+        timer = setTimeout(retry, retryCount < 5 ? 50 : 200)
+      } else {
+        // Final fallback: use parent dimensions or sensible defaults
+        const parent = el.parentElement
+        const w = parent?.offsetWidth || el.offsetWidth || 400
+        const h = parent?.offsetHeight || el.offsetHeight || 300
+        setSize({ width: w, height: h })
+        setReady(true)
       }
     }
-    poll()
+
+    retry()
 
     const ro = new ResizeObserver(() => measure())
     ro.observe(el)
 
     return () => {
-      cancelAnimationFrame(raf)
+      clearTimeout(timer)
       ro.disconnect()
     }
   }, [containerRef])
 
-  if (size.width === 0 || size.height === 0) return null
+  if (!ready) return null
 
-  return React.cloneElement(children as React.ReactElement, {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return React.cloneElement(children as React.ReactElement<any>, {
     width: size.width,
     height: size.height,
   })
