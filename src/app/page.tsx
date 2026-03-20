@@ -14,8 +14,8 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
+  ComposedChart,
   Line,
-  LineChart,
   Pie,
   PieChart,
   XAxis,
@@ -93,11 +93,11 @@ const productionTrend = [
 ];
 
 const equipmentDistribution = [
-  { name: "运行中", value: 4, fill: "var(--color-chart-1)" },
-  { name: "空闲", value: 1, fill: "var(--color-chart-4)" },
-  { name: "维护中", value: 1, fill: "var(--color-chart-3)" },
-  { name: "故障", value: 1, fill: "var(--color-chart-5)" },
-  { name: "离线", value: 1, fill: "var(--color-chart-2)" },
+  { name: "运行中", value: 4, fill: "oklch(0.55 0.19 260)" },
+  { name: "空闲", value: 1, fill: "oklch(0.7 0.14 230)" },
+  { name: "维护中", value: 1, fill: "oklch(0.65 0.18 280)" },
+  { name: "故障", value: 1, fill: "oklch(0.5 0.12 240)" },
+  { name: "离线", value: 1, fill: "oklch(0.6 0.15 200)" },
 ];
 
 const workshopOutput = [
@@ -202,11 +202,12 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <ChartContainer config={trendChartConfig} className="h-[280px] w-full">
-                <LineChart data={productionTrend}>
+                <ComposedChart data={productionTrend}>
                   <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                   <XAxis dataKey="date" className="text-xs" tick={{ fill: "var(--color-muted-foreground)" }} />
                   <YAxis className="text-xs" tick={{ fill: "var(--color-muted-foreground)" }} />
                   <ChartTooltip content={<ChartTooltipContent />} />
+                  <Bar dataKey="defect" fill="var(--color-chart-5)" radius={[4, 4, 0, 0]} opacity={0.4} />
                   <Line
                     type="monotone"
                     dataKey="output"
@@ -215,8 +216,7 @@ export default function DashboardPage() {
                     dot={{ r: 4, fill: "var(--color-chart-1)" }}
                     activeDot={{ r: 6 }}
                   />
-                  <Bar dataKey="defect" fill="var(--color-chart-5)" radius={[4, 4, 0, 0]} opacity={0.4} />
-                </LineChart>
+                </ComposedChart>
               </ChartContainer>
             </CardContent>
           </Card>
