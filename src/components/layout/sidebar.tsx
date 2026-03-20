@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 const menuItems = [
   {
     id: "dashboard",
-    name: "工作台",
+    name: "首页",
     icon: LayoutDashboard,
     route: "/",
   },
