@@ -34,6 +34,56 @@ function useChart() {
   return context
 }
 
+function ChartInner({
+  children,
+  containerRef,
+}: {
+  children: React.ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>["children"]
+  containerRef: React.RefObject<HTMLDivElement | null>
+}) {
+  const [size, setSize] = React.useState({ width: 0, height: 0 })
+
+  React.useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    let raf: number
+
+    const measure = () => {
+      const rect = el.getBoundingClientRect()
+      setSize((prev) => {
+        if (prev.width === Math.floor(rect.width) && prev.height === Math.floor(rect.height)) return prev
+        return { width: Math.floor(rect.width), height: Math.floor(rect.height) }
+      })
+    }
+
+    // Poll until we get real dimensions (handles sandbox lazy-layout)
+    const poll = () => {
+      measure()
+      const rect = el.getBoundingClientRect()
+      if (rect.width === 0 || rect.height === 0) {
+        raf = requestAnimationFrame(poll)
+      }
+    }
+    poll()
+
+    const ro = new ResizeObserver(() => measure())
+    ro.observe(el)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+    }
+  }, [containerRef])
+
+  if (size.width === 0 || size.height === 0) return null
+
+  return React.cloneElement(children as React.ReactElement, {
+    width: size.width,
+    height: size.height,
+  })
+}
+
 function ChartContainer({
   id,
   className,
@@ -48,24 +98,24 @@ function ChartContainer({
 }) {
   const uniqueId = React.useId()
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`
+  const containerRef = React.useRef<HTMLDivElement>(null)
 
   return (
     <ChartContext.Provider value={{ config }}>
       <div
+        ref={containerRef}
         data-slot="chart"
         data-chart={chartId}
         className={cn(
-          "h-full w-full relative [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "h-full w-full [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
           className
         )}
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <div className="absolute inset-0">
-          <RechartsPrimitive.ResponsiveContainer width="100%" height="100%">
-            {children}
-          </RechartsPrimitive.ResponsiveContainer>
-        </div>
+        <ChartInner containerRef={containerRef}>
+          {children}
+        </ChartInner>
       </div>
     </ChartContext.Provider>
   )
