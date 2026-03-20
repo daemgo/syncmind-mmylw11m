@@ -34,79 +34,13 @@ function useChart() {
   return context
 }
 
-function ChartInner({
-  children,
-  containerRef,
-}: {
-  children: React.ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>["children"]
-  containerRef: React.RefObject<HTMLDivElement | null>
-}) {
-  const [size, setSize] = React.useState({ width: 0, height: 0 })
-  const [ready, setReady] = React.useState(false)
-
-  React.useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-
-    let retryCount = 0
-    let timer: ReturnType<typeof setTimeout>
-
-    const measure = () => {
-      // Try multiple methods to get dimensions
-      const rect = el.getBoundingClientRect()
-      let w = Math.floor(rect.width)
-      let h = Math.floor(rect.height)
-
-      // Fallback to offsetWidth/offsetHeight
-      if (w === 0) w = el.offsetWidth
-      if (h === 0) h = el.offsetHeight
-
-      // Fallback to clientWidth/clientHeight
-      if (w === 0) w = el.clientWidth
-      if (h === 0) h = el.clientHeight
-
-      if (w > 0 && h > 0) {
-        setSize({ width: w, height: h })
-        setReady(true)
-        return true
-      }
-      return false
-    }
-
-    // Retry with increasing delays for sandbox environments
-    const retry = () => {
-      if (measure()) return
-      retryCount++
-      if (retryCount < 20) {
-        timer = setTimeout(retry, retryCount < 5 ? 50 : 200)
-      } else {
-        // Final fallback: use parent dimensions or sensible defaults
-        const parent = el.parentElement
-        const w = parent?.offsetWidth || el.offsetWidth || 400
-        const h = parent?.offsetHeight || el.offsetHeight || 300
-        setSize({ width: w, height: h })
-        setReady(true)
-      }
-    }
-
-    retry()
-
-    const ro = new ResizeObserver(() => measure())
-    ro.observe(el)
-
-    return () => {
-      clearTimeout(timer)
-      ro.disconnect()
-    }
-  }, [containerRef])
-
-  if (!ready) return null
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return React.cloneElement(children as React.ReactElement<any>, {
-    width: size.width,
-    height: size.height,
-  })
+/**
+ * Parse pixel height from Tailwind className like "h-[280px]"
+ */
+function parseHeight(className?: string): number {
+  if (!className) return 300
+  const match = className.match(/h-\[(\d+)px\]/)
+  return match ? parseInt(match[1], 10) : 300
 }
 
 function ChartContainer({
@@ -123,24 +57,25 @@ function ChartContainer({
 }) {
   const uniqueId = React.useId()
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`
-  const containerRef = React.useRef<HTMLDivElement>(null)
+  const height = parseHeight(className)
 
   return (
     <ChartContext.Provider value={{ config }}>
       <div
-        ref={containerRef}
         data-slot="chart"
         data-chart={chartId}
         className={cn(
-          "h-full w-full [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "h-full w-full [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden [&_.recharts-surface]:w-full",
           className
         )}
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <ChartInner containerRef={containerRef}>
-          {children}
-        </ChartInner>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        {React.cloneElement(children as React.ReactElement<any>, {
+          width: 800,
+          height: height,
+        })}
       </div>
     </ChartContext.Provider>
   )
